@@ -1,15 +1,35 @@
+<script>
+    export default{
+
+        data () {
+            return{
+                username: '',
+                password: '',
+                keepSignedIn: true,
+            }
+        },
+ 
+        methods: {
+            submit () {
+                this.$emit('do-sign-in', {...this.$data})          
+            }
+        },
+
+    }
+</script>
+
 <template>
-    <div class="sign-in-htm">
+    <form action="#" @submit.prevent="submit" class="sign-in-htm">
         <div class="group">
             <label for="sign-in-user" class="label">Username</label>
-            <input id="sign-in-user" type="text" class="input">
+            <input id="sign-in-user" type="text" class="input" v-model="username">
         </div>
         <div class="group">
             <label for="sign-in-pass" class="label">Password</label>
-            <input id="sign-in-pass" type="password" class="input" data-type="password">
+            <input id="sign-in-pass" type="password" class="input" data-type="password" v-model="password">
         </div>
         <div class="group">
-            <input id="check" type="checkbox" class="check" checked>
+            <input id="check" type="checkbox" class="check" v-model="keepSignedIn">
             <label for="check"><span class="icon"></span> Keep me Signed in</label>
         </div>
         <div class="group">
@@ -19,5 +39,5 @@
         <div class="foot-lnk">
             <a href="#forgot">Forgot Password?</a>
         </div>
-    </div> 
+    </form> 
 </template>
